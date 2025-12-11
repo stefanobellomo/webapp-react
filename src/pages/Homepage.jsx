@@ -1,7 +1,7 @@
 export default function Homepage() {
     return (
         <main>
-            <h1>ciao coglione</h1>
+            <h1>ciao homepage</h1>
         </main>
     )
 }
