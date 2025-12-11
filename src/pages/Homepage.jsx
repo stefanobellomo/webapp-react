@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Homepage() {
 
@@ -11,6 +12,12 @@ export default function Homepage() {
                 setMovies(res.data.movies)
             })
     }, [])
+
+    const navigate = useNavigate()
+
+    function handleClick(movie) {
+        navigate(`/DetailsPage/${movie}`)
+    }
 
     console.log(movies);
 
@@ -27,6 +34,7 @@ export default function Homepage() {
                                 <h1>{movie.title}</h1>
                                 <h6>{movie.director}</h6>
                                 <h6>{movie.genre}</h6>
+                                <button onClick={() => handleClick(movie.id)}>Details film</button>
                             </div>
                         </div>
                     ))}

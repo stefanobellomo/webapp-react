@@ -12,11 +12,6 @@ export default function Header() {
                                     Homepage
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link active" to="/DetailsPage" aria-current="page">
-                                    Details page
-                                </NavLink>
-                            </li>
                         </ul>
                     </div>
                 </div>
