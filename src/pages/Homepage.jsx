@@ -22,9 +22,11 @@ export default function Homepage() {
                         <div className="col" key={movie.id}>
                             <div className="card">
                                 <img src={`https://placehold.co/200x200?text=${movie.title}`} alt="cover" className="card-img-top" />
+                            </div>
+                            <div className="card-body p-2">
                                 <h1>{movie.title}</h1>
-                                <p>{movie.director}</p>
-                                <p>{movie.genre}</p>
+                                <h6>{movie.director}</h6>
+                                <h6>{movie.genre}</h6>
                             </div>
                         </div>
                     ))}
