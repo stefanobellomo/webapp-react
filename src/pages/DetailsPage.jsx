@@ -18,6 +18,7 @@ export default function DetailsPage() {
     }, [])
 
     console.log(movies, reviews);
+    const navigate = useNavigate()
 
     return (
         <>
@@ -52,6 +53,8 @@ export default function DetailsPage() {
                         </div>
                     </div>
                 ))}
+
+                <button className="btn btn-dark" onClick={() => (navigate(-1))}>Torna indietro</button>
 
             </section>
 
