@@ -34,7 +34,7 @@ export default function Homepage() {
                                 <h1>{movie.title}</h1>
                                 <h6>{movie.director}</h6>
                                 <h6>{movie.genre}</h6>
-                                <button onClick={() => handleClick(movie.id)}>Details film</button>
+                                <button className="btn btn-dark" onClick={() => handleClick(movie.id)}>Details film</button>
                             </div>
                         </div>
                     ))}

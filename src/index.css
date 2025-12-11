@@ -1,1 +1,7 @@
 @import url('bootstrap');
+@import url('bootstrap-icons');
+
+.social {
+    text-decoration: none;
+    color: black;
+}

@@ -45,7 +45,7 @@ export default function DetailsPage() {
                     <div className="col" key={review.id}>
                         <div className="card-body p-2">
                             <h3>Author: {review.name}</h3>
-                            <h6>Vote: {review.vote}</h6>
+                            <h6>Vote: <span className={review.vote > 3 ? 'text-success' : 'text-danger'}>{review.vote}</span></h6>
                             <h6>Text: {review.text}</h6>
                             <h6>Create at: {review.created_at}</h6>
                             <h6>Updated at: {review.updated_at}</h6>
@@ -58,3 +58,4 @@ export default function DetailsPage() {
         </>
     )
 }
+
