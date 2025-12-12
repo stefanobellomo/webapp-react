@@ -1,0 +1,37 @@
+import { useNavigate } from "react-router-dom"
+
+export default function Card({ movie }) {
+
+    const navigate = useNavigate()
+
+    function handleClick(movie) {
+        navigate(`/DetailsPage/${movie}`)
+    }
+
+    return (
+        <div className="col" key={movie.id}>
+            <div className="card">
+                <img src={`https://placehold.co/200x200?text=${movie.title}`} alt="cover" className="card-img-top" />
+            </div>
+            <div className="card-body p-2">
+                <h1>{movie.title}</h1>
+                <h6>{movie.director}</h6>
+                <h6>{movie.genre}</h6>
+                <button className="btn btn-dark" onClick={() => handleClick(movie.id)}>Details film</button>
+            </div>
+        </div>
+    )
+}
+
+
+// <div className="col" key={movie.id}>
+//     <div className="card">
+//         <img src={`https://placehold.co/200x200?text=${movie.title}`} alt="cover" className="card-img-top" />
+//     </div>
+//     <div className="card-body p-2">
+//         <h1>{movie.title}</h1>
+//         <h6>{movie.director}</h6>
+//         <h6>{movie.genre}</h6>
+//         <button className="btn btn-dark" onClick={() => handleClick(movie.id)}>Details film</button>
+//     </div>
+// </div>
