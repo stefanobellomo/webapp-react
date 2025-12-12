@@ -11,7 +11,7 @@ export default function HomepageCard({ movie }) {
     return (
         <div className="col" key={movie.id}>
             <div className="card">
-                <img src={`https://placehold.co/200x200?text=${movie.title}`} alt="cover" className="card-img-top" />
+                <img src={`../../public/movies_cover/${movie.image}`} alt="cover" className="card-img-top" />
             </div>
             <div className="card-body p-2">
                 <h1>{movie.title}</h1>
