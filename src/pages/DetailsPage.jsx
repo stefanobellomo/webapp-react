@@ -75,7 +75,7 @@ export default function DetailsPage() {
                             <ReviewCard key={review.id} review={review} />
                         ))}
 
-                        <button className="btn btn-dark" onClick={() => (navigate(-1))}>Torna indietro</button>
+                        <button className="btn btn-dark" onClick={() => (navigate("/"))}>Torna indietro</button>
 
                     </div>
                 </section>
