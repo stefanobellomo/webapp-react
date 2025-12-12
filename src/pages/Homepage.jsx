@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import Card from "../Components/Card"
+import HomepageCard from "../Components/HomepageCard"
 
 export default function Homepage() {
 
@@ -21,7 +21,7 @@ export default function Homepage() {
             <div className="container my-5">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
                     {movies.map(movie => (
-                        <Card key={movie.id} movie={movie} />
+                        <HomepageCard key={movie.id} movie={movie} />
                     ))}
                 </div>
             </div>
