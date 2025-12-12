@@ -10,6 +10,9 @@ export default function DetailsPage() {
 
     const [movies, setMovies] = useState([])
     const [reviews, setReviews] = useState([])
+    const [reviewerName, setReviewerName] = useState("")
+    const [reviewText, setReviewText] = useState("")
+    const [reviewerVote, setReviewerVote] = useState()
 
     useEffect(() => {
         axios.get(`http://localhost:3007/api/movies/${id}`)
@@ -21,6 +24,18 @@ export default function DetailsPage() {
 
     console.log(movies, reviews);
     const navigate = useNavigate()
+
+    function handleChange(e) {
+        e.preventDefault()
+        setReviews([...reviews, {
+            name: reviewerName,
+            text: reviewText,
+            vote: reviewerVote
+        }])
+        setReviewerName("")
+        setReviewText("")
+        setReviewerVote(1)
+    }
 
     return (
         <>
@@ -54,23 +69,29 @@ export default function DetailsPage() {
                                     className="form-select"
                                     name="rating"
                                     id="rating"
+                                    value={reviewerVote}
+                                    onChange={(e) => setReviewerVote(e.target.value)}
                                 >
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
-                                    <option value="">5</option>
+                                    <option value={1}>1</option>
+                                    <option value={2}>2</option>
+                                    <option value={3}>3</option>
+                                    <option value={4}>4</option>
+                                    <option value={5}>5</option>
                                 </select>
                             </div>
-
+                            <div className="mb-3">
+                                <label htmlFor="" className="form-label">Name</label>
+                                <textarea className="form-control" name="name" value={reviewerName} id="name" rows="5" placeholder="add your name" onChange={(e) => setReviewerName(e.target.value)}></textarea>
+                            </div>
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Review</label>
-                                <textarea className="form-control" name="review" id="review" rows="5" placeholder="add your review"></textarea>
+                                <textarea className="form-control" name="review" value={reviewText} id="review" rows="5" placeholder="add your review" onChange={(e) => setReviewText(e.target.value)}></textarea>
                             </div>
 
                             <button
                                 type="submit"
-                                className="btn btn-dark">
+                                className="btn btn-dark"
+                                onClick={handleChange}>
                                 Submit
                             </button>
 
