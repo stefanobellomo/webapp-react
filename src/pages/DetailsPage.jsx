@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import DetailsCard from "../Components/DetailsCard";
 import ReviewCard from "../Components/ReviewCard";
+import FormReview from "../Components/FormReview";
+
 
 export default function DetailsPage() {
 
@@ -27,38 +29,6 @@ export default function DetailsPage() {
     // console.log(movies, reviews);
     const navigate = useNavigate()
 
-    function handleChange(e) {
-        e.preventDefault()
-
-        if (reviewerName.length === 0) {
-            setToggle(false)
-            return
-        } else {
-            setToggle(true)
-        }
-
-        if (reviewText.length === 0) {
-            setTextToggle(false)
-            return
-        } else {
-            setTextToggle(true)
-        }
-
-        setReviews([...reviews, {
-            id: reviews[reviews.length - 1].id + 1,
-            name: reviewerName,
-            text: reviewText,
-            vote: reviewerVote
-        }])
-        console.log(reviews);
-
-
-        setReviewerName("")
-        setReviewText("")
-        setReviewerVote(1)
-
-    }
-
     return (
         <>
             <div className="container my-4">
@@ -75,7 +45,9 @@ export default function DetailsPage() {
                             <ReviewCard key={review.id} review={review} />
                         ))}
 
-                        <button className="btn btn-dark" onClick={() => (navigate("/"))}>Torna indietro</button>
+                        <div className="d-flex justify-content-center">
+                            <button className="btn btn-dark" onClick={() => (navigate("/"))}>Torna indietro</button>
+                        </div>
 
                     </div>
                 </section>
@@ -83,44 +55,7 @@ export default function DetailsPage() {
                 <section>
                     <div>
                         <h3>Leave your review</h3>
-                        <form>
-
-                            <div className="mb-3">
-                                <label htmlFor="rating" className="form-label">Vote</label>
-                                <select
-                                    className="form-select"
-                                    name="rating"
-                                    id="rating"
-                                    value={reviewerVote}
-                                    onChange={(e) => setReviewerVote(e.target.value)}
-                                >
-                                    <option value={1}>1</option>
-                                    <option value={2}>2</option>
-                                    <option value={3}>3</option>
-                                    <option value={4}>4</option>
-                                    <option value={5}>5</option>
-                                </select>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="name" className="form-label">Name</label>
-                                <input className="form-control" type="text" name="name" value={reviewerName} id="name" placeholder="add your name" onChange={(e) => setReviewerName(e.target.value)}>
-                                </input>
-                                <span className={toggle ? 'd-none' : 'text-danger'}>Campo obbligatorio...</span>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="text" className="form-label">Review</label>
-                                <textarea className="form-control" name="review" value={reviewText} id="review" rows="5" placeholder="add your review" onChange={(e) => setReviewText(e.target.value)}></textarea>
-                                <span className={textToggle ? 'd-none' : 'text-danger'}>Campo obbligatorio...</span>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="btn btn-dark"
-                                onClick={handleChange}>
-                                Submit
-                            </button>
-
-                        </form>
+                        <FormReview movieId={id} />
                     </div>
                 </section>
             </div>
