@@ -12,19 +12,19 @@ export default function DetailsPage() {
 
     const [movies, setMovies] = useState([])
     const [reviews, setReviews] = useState([])
-    const [reviewerName, setReviewerName] = useState("")
-    const [reviewText, setReviewText] = useState("")
-    const [reviewerVote, setReviewerVote] = useState(1)
-    const [toggle, setToggle] = useState(true)
-    const [textToggle, setTextToggle] = useState(true)
 
-    useEffect(() => {
+    function fetchMovie() {
         axios.get(`http://localhost:3007/api/movies/${id}`)
             .then(res => {
+                // or [] perchè così gestisco i casi in cui non ci sono recensioni associate anche se ora non serve
+                setReviews(res.data.reviews || []);
                 setMovies(res.data)
-                setReviews(res.data.reviews)
-            })
-    }, [])
+            });
+    }
+
+    useEffect(() => {
+        fetchMovie();
+    }, [id]);
 
     // console.log(movies, reviews);
     const navigate = useNavigate()
@@ -34,7 +34,7 @@ export default function DetailsPage() {
             <div className="container my-4">
                 <section className="movie">
 
-                    <DetailsCard movies={movies} />
+                    <DetailsCard movies={movies} onSuccess={fetchMovie} />
 
                 </section>
 

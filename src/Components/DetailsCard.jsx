@@ -2,7 +2,7 @@ export default function DetailsCard({ movies }) {
     return (
         <div className="col d-flex align-items-center" key={movies.id}>
             <div className="card">
-                <img src={`../../public/movies_cover/${movies.image}`} alt="cover" className="card-img-top" />
+                <img src={`../../movies_cover/${movies.image}`} alt="cover" className="card-img-top" />
             </div>
             <div className="card-body p-2">
                 <h1>Title: {movies.title}</h1>

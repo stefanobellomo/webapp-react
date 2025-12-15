@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-export default function FormReview({ movieId }) {
+export default function FormReview({ movieId, onSuccess }) {
 
     const initialFormState = {
         name: "",
@@ -16,9 +16,10 @@ export default function FormReview({ movieId }) {
         axios.post(`http://localhost:3007/api/movies/${movieId}/reviews`, formData)
             .then((response) => {
                 setFormData(initialFormState)
+                onSuccess && onSuccess();
             })
             .catch((error) => {
-                console.log("error submittin greiews", error);
+                console.log(error.response?.data || error);
             })
     }
 
