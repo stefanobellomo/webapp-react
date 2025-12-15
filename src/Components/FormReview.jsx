@@ -29,8 +29,8 @@ export default function FormReview({ movieId }) {
                 <label htmlFor="rating" className="form-label">Vote</label>
                 <select
                     className="form-select"
-                    name="rating"
-                    id="rating"
+                    name="vote"
+                    id="vote"
                     value={formData.vote}
                     onChange={(e) => setFormData({ ...formData, vote: e.target.value })}
                 >
@@ -49,7 +49,7 @@ export default function FormReview({ movieId }) {
             </div>
             <div className="mb-3">
                 <label htmlFor="text" className="form-label">Review</label>
-                <textarea className="form-control" name="review" value={formData.text} id="review" rows="5" placeholder="add your review" onChange={(e) => setFormData({ ...formData, text: e.target.value })}></textarea>
+                <textarea className="form-control" name="text" value={formData.text} id="text" rows="5" placeholder="add your review" onChange={(e) => setFormData({ ...formData, text: e.target.value })}></textarea>
                 {/* <span className={textToggle ? 'd-none' : 'text-danger'}>Campo obbligatorio...</span> */}
             </div>
 
