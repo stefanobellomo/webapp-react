@@ -7,8 +7,10 @@ import { useGlobalContext } from "../context/GlobalContext"
 export default function Homepage() {
 
     const [movies, setMovies] = useState([])
+    const { setLoading } = useGlobalContext()
 
     useEffect(() => {
+        setLoading(true)
         axios.get('http://localhost:3007/api/movies')
             .then(res => {
                 setMovies(res.data.movies)

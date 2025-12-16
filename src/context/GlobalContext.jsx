@@ -6,16 +6,11 @@ const GlobalContext = createContext()
 function GlobalProvider({ children }) {
 
     const [loading, setLoading] = useState(false)
-    const values = {
-        loading,
-        setLoading
-    }
 
     return (
-        <GlobalContext.Provider value={values}>
+        <GlobalContext.Provider value={{ loading, setLoading }}>
             {children}
         </GlobalContext.Provider>
-
     )
 }
 
