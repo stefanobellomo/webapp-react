@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import HomepageCard from "../Components/HomepageCard"
+import { useGlobalContext } from "../context/GlobalContext"
 
 export default function Homepage() {
 
@@ -11,6 +12,8 @@ export default function Homepage() {
         axios.get('http://localhost:3007/api/movies')
             .then(res => {
                 setMovies(res.data.movies)
+            }).finally(() => {
+                setLoading(false)
             })
     }, [])
 
